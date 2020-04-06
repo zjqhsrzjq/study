@@ -40,14 +40,6 @@ public class testTest {
         return new byte[0];
     }
 
-     class read implements AutoCloseable{
-
-        @Override
-        public void close() {
-            System.out.println("close");
-        }
-    }
-
     // 文件内容转换为List<node>
     public List<Node> convertToNodeList(byte[] bytes) {
         String content = new String(bytes);

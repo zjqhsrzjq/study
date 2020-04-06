@@ -2,8 +2,7 @@ package com.example.george.study.service.readSortStudy;
 
 import org.springframework.stereotype.Component;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.*;
 
 /**
  * @author George
@@ -12,18 +11,17 @@ import java.io.FileReader;
 @Component
 public class TxtRead {
 
-    public String read(){
-        StringBuilder sb  = new StringBuilder();
-        try{
-            String filePath ="/Users/george/coding/study/study-service/src/test/resource/data.txt";
-            BufferedReader br = new BufferedReader(new FileReader(filePath));
-            while (br.readLine()!=null){
-                sb.append(br.readLine()).append("\n");
+    public String read(String filePath){
+        StringBuilder sb = new StringBuilder();
+        try (BufferedInputStream inputStream = new BufferedInputStream(new FileInputStream(filePath))) {
+            byte[] bytes = new byte[inputStream.available()];
+            while ((inputStream.read(bytes)!=-1)){
+                sb.append(new String(bytes));
             }
-            br.close();
-        }catch (Exception e){
+            return sb.toString();
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        return  sb.toString();
+        return "";
     }
 }

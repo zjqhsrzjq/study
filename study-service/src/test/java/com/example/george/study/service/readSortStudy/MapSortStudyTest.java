@@ -1,6 +1,7 @@
 package com.example.george.study.service.readSortStudy;
 
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -28,26 +29,6 @@ public class MapSortStudyTest {
         List<Map.Entry<String,Integer>> list1 = stream1.collect(Collectors.toList());
         System.out.println(list.toString());
     }
-
-//    @Test
-//    public void read(){
-//        Map<String,Integer> map =new HashMap<>();
-//        try{
-//            String filePath ="/Users/george/coding/study/study-service/src/test/resource/data.txt";
-//            BufferedReader br = new BufferedReader(new FileReader(filePath));
-//            while((br.readLine())!=null){//使用readLine方法，一次读一行
-//                String line = br.readLine();
-//                if(map.containsKey(line)){
-//                    map.put(line,map.get(line)+1);
-//                }else {
-//                    map.put(line,1);
-//                }
-//            }
-//            br.close();
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
-//    }
 
     @Test
     public void readAndSort(){

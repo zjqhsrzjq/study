@@ -2,6 +2,7 @@ package com.example.george.study.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.example.george.study.service.factory.normal.TestFactory;
+import com.example.george.study.service.queryAndOutput.StockDataTest;
 import com.example.george.study.service.threadAndAsync.ThreadMethod;
 import org.apache.commons.lang3.concurrent.BasicThreadFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,11 +22,18 @@ public class TestController {
     private TestFactory testFactoryManager;
     @Autowired
     ThreadMethod threadMethod;
+    @Autowired
+    StockDataTest stockDataTest;
 
     @RequestMapping("factory/{num}")
     public String factory(@PathVariable Integer num){
 
         return "result:"+ JSONObject.toJSONString(testFactoryManager.getTest(num));
+    }
+
+    @RequestMapping("tongHuaShun")
+    public String tongHuaShun(){
+         return stockDataTest.test().toString();
     }
 
     @RequestMapping("delay/{num}")
